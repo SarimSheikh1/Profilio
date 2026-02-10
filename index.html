@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Portfolio</title>
+    <link rel="stylesheet" href="styles-balanced.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Theme Controls -->
+    <div class="theme-controls">
+        <button class="theme-toggle" id="themeToggle">🌙</button>
+        <div class="color-picker">
+            <button class="color-btn" data-theme="cosmic">🌌</button>
+            <button class="color-btn" data-theme="neon">⚡</button>
+            <button class="color-btn" data-theme="minimal">⚪</button>
+            <button class="color-btn" data-theme="sunset">🌅</button>
+            <button class="color-btn" data-theme="forest">🌲</button>
+            <button class="color-btn" data-theme="ocean">🌊</button>
+            <button class="color-btn" data-theme="matrix">💚</button>
+            <button class="color-btn" data-theme="earth">🌍</button>
+            <button class="color-btn" data-theme="electric">⚡</button>
+            <button class="color-btn" data-theme="pastel">🌸</button>
+        </div>
+        <div class="animation-controls">
+            <label>Animation Intensity:</label>
+            <input type="range" id="animationIntensity" min="0.5" max="2" step="0.1" value="1">
+        </div>
+    </div>
+
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader">
+            <div class="loader-text">Loading Portfolio</div>
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Particle Canvas -->
+    <canvas id="particleCanvas"></canvas>
+    
+    <!-- Mouse Trail -->
+    <div class="mouse-trail" id="mouseTrail"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-brand">
+            <span class="logo-text">Portfolio</span>
+        </div>
+        <div class="nav-menu" id="navMenu">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-progress"></div>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg">
+                <div class="floating-shapes">
+                    <div class="shape shape-1"></div>
+                    <div class="shape shape-2"></div>
+                    <div class="shape shape-3"></div>
+                </div>
+            </div>
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="https://via.placeholder.com/300x300/6366f1/ffffff?text=Your+Photo" alt="Profile Picture" class="profile-pic">
+                </div>
+                <h1 class="hero-title">
+                    <span class="typewriter" data-text="Sarim Hatif">Sarim Hatif</span>
+                </h1>
+                <h2 class="hero-role">
+                    <span class="typewriter" data-text="Full Stack Developer & AI Enthusiast" data-delay="2000">Full Stack Developer & AI Enthusiast</span>
+                </h2>
+                <p class="hero-subtitle fade-in-up">Crafting innovative digital solutions with cutting-edge technology and creative design</p>
+                <div class="hero-buttons">
+                    <button class="btn btn-primary glow-btn" onclick="document.getElementById('portfolio').scrollIntoView({behavior: 'smooth'})">View My Work</button>
+                    <button class="btn btn-secondary" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+                    <a href="https://drive.google.com/file/d/your-cv-file-id/view" target="_blank" class="btn btn-outline" download>Download CV</a>
+                </div>
+            </div>
+            <div class="scroll-hint">
+                <div class="scroll-arrow"></div>
+                <span>Scroll to explore</span>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="section-title glitch-text" data-text="About Me">About Me</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <div class="about-image">
+                            <img src="https://via.placeholder.com/400x500/6366f1/ffffff?text=About+Image" alt="About Me" class="about-pic">
+                        </div>
+                        <div class="about-description">
+                            <h3>Hello! I'm Sarim Hatif</h3>
+                            <p class="fade-in-up">I'm a passionate Full Stack Developer and AI enthusiast with expertise in modern web technologies. I love creating beautiful, functional, and user-friendly digital experiences that solve real-world problems.</p>
+                            <p class="fade-in-up">With a strong background in both frontend and backend development, I specialize in React, Node.js, Python, and AI/ML technologies. I'm always eager to learn new technologies and take on challenging projects.</p>
+                            <div class="about-highlights">
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">🚀</span>
+                                    <span>Performance Optimization</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">🎨</span>
+                                    <span>UI/UX Design</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">🤖</span>
+                                    <span>AI Integration</span>
+                                </div>
+                                <div class="highlight-item">
+                                    <span class="highlight-icon">📱</span>
+                                    <span>Mobile Development</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="15">0</span>
+                            <span class="stat-label">Projects Completed</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="2">0</span>
+                            <span class="stat-label">Years Experience</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="10">0</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number" data-target="12">0</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <h2 class="section-title">My Portfolio</h2>
+                <div class="portfolio-filters">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item" data-category="web">
+                        <div class="portfolio-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/400x250/6366f1/ffffff?text=Family+Canvas" alt="Family Canvas" class="project-image">
+                                <div class="card-overlay">
+                                    <div class="overlay-content">
+                                        <a href="https://familycanvass.netlify.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                                        <a href="https://github.com/sarimhatif/family-canvas" target="_blank" class="btn btn-small btn-secondary">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Family Canvas Platform</h3>
+                                <p>Beautiful family photo sharing and memory preservation platform with modern UI</p>
+                                <div class="card-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">Node.js</span>
+                                    <span class="tag">MongoDB</span>
+                                    <span class="tag">Cloudinary</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web">
+                        <div class="portfolio-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/400x250/8b5cf6/ffffff?text=Business+Website" alt="Business Website" class="project-image">
+                                <div class="card-overlay">
+                                    <div class="overlay-content">
+                                        <a href="https://business-websitey.netlify.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                                        <a href="https://github.com/sarimhatif/business-website" target="_blank" class="btn btn-small btn-secondary">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Modern Business Website</h3>
+                                <p>Professional business website with responsive design and modern animations</p>
+                                <div class="card-tags">
+                                    <span class="tag">HTML5</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">GSAP</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web">
+                        <div class="portfolio-card">
+                            <div class="card-image">
+                                <img src="https://via.placeholder.com/400x250/10b981/ffffff?text=Fast+Typing+Game" alt="Fast Typing Game" class="project-image">
+                                <div class="card-overlay">
+                                    <div class="overlay-content">
+                                        <a href="https://fast-typing1.netlify.app/" target="_blank" class="btn btn-small">Live Demo</a>
+                                        <a href="https://github.com/sarimhatif/fast-typing-game" target="_blank" class="btn btn-small btn-secondary">GitHub</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-content">
+                                <h3>Fast Typing Speed Game</h3>
+                                <p>Interactive typing speed test game with real-time WPM tracking and leaderboards</p>
+                                <div class="card-tags">
+                                    <span class="tag">JavaScript</span>
+                                    <span class="tag">CSS3</span>
+                                    <span class="tag">Local Storage</span>
+                                    <span class="tag">Game Dev</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills">
+            <div class="container">
+                <h2 class="section-title">Skills & Expertise</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <div class="category-icon">💻</div>
+                        <h3>Frontend Development</h3>
+                        <div class="skill-item">
+                            <span>JavaScript/TypeScript</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>React/Next.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>CSS/SCSS/Tailwind</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Vue.js</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="category-icon">⚙️</div>
+                        <h3>Backend Development</h3>
+                        <div class="skill-item">
+                            <span>Node.js/Express</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Python/Django/FastAPI</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>MongoDB/PostgreSQL</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>GraphQL/REST APIs</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="category-icon">📱</div>
+                        <h3>Mobile & Others</h3>
+                        <div class="skill-item">
+                            <span>React Native</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Flutter</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>AWS/Docker</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Git/CI/CD</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <div class="category-icon">🤖</div>
+                        <h3>AI & Machine Learning</h3>
+                        <div class="skill-item">
+                            <span>TensorFlow/PyTorch</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="75%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>OpenAI APIs</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>Computer Vision</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="70%"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <span>NLP/LangChain</span>
+                            <div class="skill-bar">
+                                <div class="skill-progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"Sarim delivered an exceptional e-commerce platform that exceeded our expectations. His attention to detail and technical expertise is outstanding."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/6366f1/ffffff?text=JD" alt="John Doe" class="author-avatar">
+                            <div class="author-info">
+                                <h4>John Doe</h4>
+                                <span>CEO, TechCorp</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"Working with Sarim was a pleasure. He transformed our ideas into a beautiful, functional mobile app that our users love."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/8b5cf6/ffffff?text=JS" alt="Jane Smith" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Jane Smith</h4>
+                                <span>Product Manager, StartupXYZ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"The AI integration Sarim implemented revolutionized our business processes. Highly recommended for any AI/ML projects."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=MB" alt="Mike Brown" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Mike Brown</h4>
+                                <span>CTO, InnovateLab</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="testimonials">
+            <div class="container">
+                <h2 class="section-title">What Clients Say</h2>
+                <div class="testimonials-grid">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"Sarim delivered an exceptional web platform that exceeded our expectations. His attention to detail and technical expertise is outstanding."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/6366f1/ffffff?text=JD" alt="John Doe" class="author-avatar">
+                            <div class="author-info">
+                                <h4>John Doe</h4>
+                                <span>CEO, TechCorp</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"Working with Sarim was a pleasure. He transformed our ideas into a beautiful, functional website that our users love."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/8b5cf6/ffffff?text=JS" alt="Jane Smith" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Jane Smith</h4>
+                                <span>Product Manager, StartupXYZ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="quote-icon">"</div>
+                            <p>"The interactive game Sarim created is engaging and well-coded. Highly recommended for any web development projects."</p>
+                        </div>
+                        <div class="testimonial-author">
+                            <img src="https://via.placeholder.com/60x60/10b981/ffffff?text=MB" alt="Mike Brown" class="author-avatar">
+                            <div class="author-info">
+                                <h4>Mike Brown</h4>
+                                <span>CTO, GameStudio</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="section-title">Get In Touch</h2>
+                <div class="contact-content">
+                    <div class="contact-info">
+                        <h3>Let's work together</h3>
+                        <p>Ready to bring your ideas to life? Let's discuss your next project and create something amazing together.</p>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <span class="icon">📧</span>
+                                <span>sarimhatif1@gmail.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">📱</span>
+                                <span>03228668488</span>
+                            </div>
+                            <div class="contact-item">
+                                <span class="icon">📍</span>
+                                <span>Pakistan</span>
+                            </div>
+                        </div>
+                    </div>
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-group">
+                            <input type="text" id="name" required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" required>
+                            <label for="email">Your Email</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#" class="social-link">GitHub</a>
+                <a href="#" class="social-link">LinkedIn</a>
+                <a href="#" class="social-link">Twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-balanced.js"></script>
+</body>
+</html>
